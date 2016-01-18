@@ -1,0 +1,41 @@
+<h1>All Products</h1>
+
+<table width="95%"  cellpadding="2" cellspacing="1" > <!--style="table-layout:fixed;"-->
+
+  <thead >
+    <tr>
+      <th>Photo(could be click)</th>
+      <th>Name(could be click) </th>
+      <th>Price</th>
+      <th>Time</th>
+      <% if can? :manage , :Product %>
+      <th>Edit Operation  </th>
+      <th>Remove Operation</th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+          <td><%= link_to image_tag(product.image_url,width:"100px",height:"100px") ,product %></td> 
+          <td><%= link_to product.name ,product%> </td>
+          <td><%= product.price %></td>
+          <td><em><%= "#{time_ago_in_words(product.created_at)} ago" %></em></td> 
+          <% if can? :manage , :Product %>
+            <td><%= link_to "Edit", edit_product_path(product) %></td> 
+            <td><%= link_to "Remove", product, method: :delete, data: { confirm: "Are you sure?" } %></td> 
+          <% end %>
+      </tr>      
+      <td>---</td>
+    <% end %>
+  
+  </tbody>
+
+</table>
+
+<br>
+
+<% if can? :manage , :Product %>
+  <%= button_to(" + ", new_product_path,method: :get,params:{show_all:true})%>
+<% end %>

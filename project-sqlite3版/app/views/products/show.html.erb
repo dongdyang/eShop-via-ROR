@@ -1,0 +1,40 @@
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+
+<div class="row">
+	<div class="col-md-7"><%= image_tag(@product.image_url, width: "440", class: "img-zoom", data_zoom_image: @product.image_url) %></div>
+
+	<div class="col-md-5">
+		<p>
+		  <h1><%= @product.name %></h1>
+		</p>
+
+		
+		<p >
+		  <h5><strong>Price:</strong></h5>
+		  <h3>$ <%= @product.price %></h3>
+		</p>
+
+		<p><strong>Average Rating:</strong> <div class="rated" data-score="<%= @product.average_rating %>"></div> </p>
+
+		<p>
+		  <%= render partial: "pay_checkout_button.html" %>
+		</p>
+	</div>
+
+</div>
+<div>	
+		<h3><stong>favorite star</stong><br></h3>
+		<p>
+	  		<div class="rating"></div>
+	  	</p>
+	</div>
+<br>
+<div>
+	  <h3><strong>Description:</strong></h3>
+	  <h5><%= @product.description %></h5>
+</div>
+
+<%= render 'new_comment' %>
+
+<%= render 'comments' %>

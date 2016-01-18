@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Shops</h1>
+
+
+<table width="95%"  cellpadding="2" cellspacing="1" > <!--style="table-layout:fixed;"-->
+
+  <thead >
+    <tr>
+      <th><h4>Name</h4></th>
+      <th><h5>Telephone</h5></th>
+      <th><h5>Location</h5></th>
+      <th><h5>Product_id</h5></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><h3><%= link_to shop.name, shop %></h></td>
+        <td><h6><%= shop.telephone %></h6></td>
+        <td><h6><%= shop.location %></h6></td>
+        <td><h6><%= shop.product_id %></h6></td>
+        <% if can? :manage , :Shop %>
+          <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
+          <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </td>
+      </tr>   
+    <% end %>
+  
+  </tbody>
+
+</table>
+
+<br>
+<% if can? :manage , :Shop %>
+  <%= button_to(" + ", new_shop_path,method: :get,params:{show_all:true})%>
+<% end %>

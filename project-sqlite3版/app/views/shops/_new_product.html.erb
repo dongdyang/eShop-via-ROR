@@ -1,0 +1,10 @@
+<%= form_for([@shop, @shop.products.build], remote: true) do |f| %>
+	<div class="field">
+		<%= f.label :product %><br>
+		<%#=f.collection_select(:product_id,Product.all,:id,:name)%>
+		<%= select(:shop,:product_id, Product.all.collect{ |product| [product.name,product.id]},{:include_blank => true} , { :class => 'select_span'} ) %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

@@ -1,0 +1,17 @@
+<div class="shop-product-reviews">
+	<% @products.each do |product| %>
+		<div class="row">
+			<hr>
+			<p>
+			<%#= link_to ('<span class="glyphicon glyphicon-remove"></span>').html_safe, shop_product_path(@shop, product), method: :delete, data: { confirm: 'Are you sure?' } %>
+			</p>
+			<p>
+				<strong><%= product.name %></strong>
+			</p>
+
+		</div>
+		
+	<% end %>
+</div>
+
+<%= will_paginate @products %>

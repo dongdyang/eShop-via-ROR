@@ -1,0 +1,16 @@
+1、
+rails server在进行邮箱验证的时候，没办法发送到相应的邮箱，因为是本地的原因，因此得在服务器上直接看需要点击的确认地址。
+
+
+
+2、http://stackoverflow.com/questions/11092807/installing-postgresql-on-ubuntu-for-ruby-on-rails
+
+进入psql 的控制台：sudo su postgres -c psql
+$ sudo su postgres -c psql
+postgres=# CREATE ROLE <username> SUPERUSER LOGIN;     此处取admin
+postgres=# \q
+
+
+postgres=# create user "psql" with password 'psql';
+postgres=# create database "appname_development" owner "psql"; 
+

@@ -1,0 +1,35 @@
+认真阅读Pro Git book 
+https://git-scm.com/book/zh/v2
+安装后立即设置自己的用户名、电子邮件
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+两种方式将你的工程提交到远程仓库
+1. 先下载（clone）远程（空）仓库，然后添加rails工程相关文件，然后提交（push）到远程仓库
+2. 先建立本地rails工程，提交到本地git仓库，然后与远程仓库合并
+
+git clone http://ruby.act.buaa.edu.cn/git/xxx
+cd xxx
+git checkout -b project（创建project分支）
+rails new project
+git add .
+git commit
+git push
+
+将已经建立的工程（如project）加入到本地git库
+在project之上建立一个xxx目录
+保证这个目录里只有一个project子目录
+在xxx目录里执行：
+git init
+git checkout -b project
+git add .
+git commit（每次提交都请明确写出本次提交的变化）
+与远程git库同步（merge）
+git pull http://ruby.act.buaa.edu.cn/git/xxx
+git push
+
+
+ruby.act.buaa.edu.cn课程网站会自动部署任何提交到project分枝的rails工程。
+约定：（project分支下）有一个project子目录，目录里是rails工程
+git push成功会有提示，端口号每人一个
+使用浏览器访问该页面
+

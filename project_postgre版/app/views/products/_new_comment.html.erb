@@ -1,0 +1,23 @@
+<% if signed_in? %>
+	<hr>
+	<h3>Comments:</h3>
+	<%= form_for([@product, @product.comments.build], remote: true) do |f| %>
+
+	  <p>
+	    <%= f.label :body, "body" %><br>
+	    <%= f.text_area :body %>
+	  </p>
+
+	  <p>
+	  	<div class="rating"></div>
+	  </p>
+
+	  <p>
+	    <%= f.submit "Submit" %>
+	  </p>
+	<% end %>
+<% else %>
+	<h4>
+	<div>(you dont log in , please log in and you will be able to comment)</div>
+	</h4>
+<% end %>
